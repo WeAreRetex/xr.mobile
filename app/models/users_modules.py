@@ -1,0 +1,49 @@
+from pydantic import BaseModel
+from typing import List, Optional
+
+
+class UsersModules(BaseModel):
+    tipiOffertaPrezziReparti: Optional[List[str]] = None
+    canUseCamera: Optional[bool] = None
+    attivaVibrazione: Optional[bool] = None
+    attivaParlato: Optional[bool] = None
+    moduloInventari: Optional[bool] = None
+    moduloFoto: Optional[bool] = None
+    moduloDocumenti: Optional[bool] = None
+    moduloOrdini: Optional[bool] = None
+    moduloClienti: Optional[bool] = None
+    moduloBolle: Optional[bool] = None
+    moduloSpesa: Optional[bool] = None
+    moduloCesti: Optional[bool] = None
+    editEtichetta: Optional[bool] = None
+    editPrezzo: Optional[bool] = None
+    editGiacenze: Optional[bool] = None
+    editPromo: Optional[bool] = None
+    editScortaMin: Optional[bool] = None
+    visioneCompleta: Optional[bool] = None
+    depositi: Optional[bool] = None
+    moduloOrdiniMF: Optional[bool] = None
+    moduloRaccoltaArticoli: Optional[bool] = None
+    numGGmoduloFoto: Optional[int] = None
+    numGGmoduloDocumenti: Optional[int] = None
+    numGGmoduloClienti: Optional[int] = None
+    numGGmoduloOrdini: Optional[int] = None
+    numGGmoduloInventari: Optional[int] = None
+    numGGmoduloBolle: Optional[int] = None
+    numGGmoduloSpesa: Optional[int] = None
+    numGGmoduloCesti: Optional[int] = None
+    numGGmoduloRaccoltaArticoli: Optional[int] = None
+    moduloScadenze: Optional[bool] = None
+    numGGmoduloScadenze: Optional[int] = None
+    moduloCalendario: Optional[bool] = None
+    numGGmoduloCalendario: Optional[int] = None
+    articoloNoAnagraDocumenti: Optional[bool] = None
+    articoloNoAnagraOrdini: Optional[bool] = None
+    articoloNoAnagraInventari: Optional[bool] = None
+    articoloNoAnagraBolle: Optional[bool] = None
+    articoloNoAnagraSpesa: Optional[bool] = None
+    articoloNoAnagraCesti: Optional[bool] = None
+    articoloNoAnagraRaccoltaArticoli: Optional[bool] = None
+    articoloNoAnagraScadenze: Optional[bool] = None
+    articoloNoFornitoreDocumenti: Optional[bool] = None
+    articoloNoFornitoreOrdini: Optional[bool] = None
