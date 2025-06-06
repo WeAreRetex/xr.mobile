@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/WeAreRetex/xr.mobile/compare/v0.2.0...v0.2.1) (2025-06-06)
+
+
+### Bug Fixes
+
+* update container image reference in deployment configuration ([42cb978](https://github.com/WeAreRetex/xr.mobile/commit/42cb9787097f11d144444245511d57190a539bbe))
+
 ## [0.2.0](https://github.com/WeAreRetex/xr.mobile/compare/v0.1.3...v0.2.0) (2025-06-06)
 
 
