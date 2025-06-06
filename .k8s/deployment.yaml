@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: xr-mobile-api
-          image: ghcr.io/weareretex/xr.mobile:latest
+          image: ghcr.io/weareretex/xr.mobile.api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
