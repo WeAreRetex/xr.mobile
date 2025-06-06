@@ -1,4 +1,4 @@
-FROM python:3.12-slim-buster
+FROM python:3.12.11-alpine3.22
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOST="0.0.0.0"

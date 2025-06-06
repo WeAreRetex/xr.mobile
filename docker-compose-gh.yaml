@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   xr-mobile-api:
-    image: ghcr.io/OWNER/xr.mobile:latest
+    image: ghcr.io/weareretex/xr.mobile:latest
     container_name: xr-mobile-api
     restart: unless-stopped
     ports:
