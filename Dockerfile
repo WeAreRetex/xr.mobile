@@ -1,6 +1,6 @@
-FROM python:3.12.11-alpine3.22
+FROM python:3.12-slim-buster
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ENV HOST="0.0.0.0"
 ENV PORT=8000
 WORKDIR /app
