@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/WeAreRetex/xr.mobile/compare/v0.1.3...v0.2.0) (2025-06-06)
+
+
+### Features
+
+* add Kubernetes deployment, service, ingress, and middleware configurations; include deployment script ([4bbc8f9](https://github.com/WeAreRetex/xr.mobile/commit/4bbc8f99c8b080a81e852c0faf431b1decfa3520))
+
 ## [0.1.3](https://github.com/WeAreRetex/xr.mobile/compare/v0.1.2...v0.1.3) (2025-06-06)
 
 
