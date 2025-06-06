@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: xr-mobile-api
+  namespace: xr-bo-mobile
+  labels:
+    app: xr-mobile-api
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    app: xr-mobile-api
+  type: ClusterIP

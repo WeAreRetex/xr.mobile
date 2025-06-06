@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: xr-mobile-api
+  namespace: xr-bo-mobile
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.middlewares: xr-bo-mobile-https-redirect@kubernetescrd,xr-bo-mobile-headers-passthrough@kubernetescrd
+spec:
+  rules:
+    - host: xr-mobile-api.crfs-platform-alba.k.retexcloud.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: xr-mobile-api
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - xr-mobile-api.crfs-platform-alba.k.retexcloud.io
+      secretName: crfs-platform-alba-tls

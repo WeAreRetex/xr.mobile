@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xr-mobile-api
+  namespace: xr-bo-mobile
+  labels:
+    app: xr-mobile-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: xr-mobile-api
+  template:
+    metadata:
+      labels:
+        app: xr-mobile-api
+    spec:
+      containers:
+        - name: xr-mobile-api
+          image: ghcr.io/weareretex/xr.mobile:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "8000"
+            - name: RELOAD
+              value: "False"
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      imagePullSecrets:
+        - name: github-weareretex-registry

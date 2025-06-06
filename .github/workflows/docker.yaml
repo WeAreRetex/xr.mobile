@@ -86,3 +86,35 @@ jobs:
           GH_TOKEN=${{ secrets.XR_GITHUB_TOKEN }}
         github-token: ${{ secrets.XR_GITHUB_TOKEN }}
         platforms: linux/arm64/v8,linux/amd64
+
+  # Deploy to K8s
+  deploy-k8s:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    name: Deploy to Kubernetes
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        token: ${{ secrets.XR_GITHUB_TOKEN }}
+    
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      
+    - name: Configure kubectl with kubeconfig
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.XR_KUBECONFIG }}" > $HOME/.kube/config
+        chmod 600 $HOME/.kube/config
+        
+    - name: Deploy to K8s
+      run: |
+        # Applica la configurazione Kubernetes
+        kubectl apply -k .k8s/
+        
+        # Verifica lo stato del deployment
+        kubectl rollout status deployment/xr-mobile-api -n xr-bo-mobile
+        
+        echo "Deployment completato!"
+        echo "L'API è disponibile all'indirizzo: https://xr-mobile-api.crfs-platform-alba.k.retexcloud.io"
