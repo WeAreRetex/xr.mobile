@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3](https://github.com/WeAreRetex/xr.mobile/compare/v0.1.2...v0.1.3) (2025-06-06)
+
+
+### Bug Fixes
+
+* update base image to python:3.12-slim-buster and correct ENV variable syntax ([05124f8](https://github.com/WeAreRetex/xr.mobile/commit/05124f8404d51487b474d6afaaa94460ba391289))
+* update Dockerfile base image to python:3.12.11-alpine3.22 and correct image reference in docker-compose ([c644e5c](https://github.com/WeAreRetex/xr.mobile/commit/c644e5c126dc8545ad2477f271151301a42aaef3))
+
 ## [0.1.2](https://github.com/WeAreRetex/xr.mobile/compare/v0.1.1...v0.1.2) (2025-06-06)
 
 
