@@ -5,8 +5,8 @@ metadata:
   namespace: xr-bo-mobile
   annotations:
     kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/router.middlewares: xr-bo-mobile-https-redirect@kubernetescrd,xr-bo-mobile-headers-passthrough@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
     - host: xr-mobile-api.crfs-platform-alba.k.retexcloud.io
       http:
@@ -21,4 +21,4 @@ spec:
   tls:
     - hosts:
         - xr-mobile-api.crfs-platform-alba.k.retexcloud.io
-      secretName: crfs-platform-alba-tls
+      secretName: xr-mobile-api-tls

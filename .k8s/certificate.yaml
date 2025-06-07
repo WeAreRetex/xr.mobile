@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: xr-mobile-api-tls
+  namespace: xr-bo-mobile
+spec:
+  secretName: xr-mobile-api-tls
+  issuerRef:
+    name: acme
+    kind: ClusterIssuer
+    group: cert-manager.io
+  dnsNames:
+    - xr-mobile-api.crfs-platform-alba.k.retexcloud.io
