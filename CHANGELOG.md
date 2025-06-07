@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/WeAreRetex/xr.mobile/compare/v0.2.1...v0.3.0) (2025-06-07)
+
+
+### Features
+
+* add TLS certificate configuration and update ingress secret reference ([e082150](https://github.com/WeAreRetex/xr.mobile/commit/e08215081c1a9014bfd338b9de40dd8be642517c))
+
+
+### Bug Fixes
+
+* update deployment replicas to 1 ([85c59a4](https://github.com/WeAreRetex/xr.mobile/commit/85c59a411e47a615208b780a8fe42197a5fe73d6))
+
 ## [0.2.1](https://github.com/WeAreRetex/xr.mobile/compare/v0.2.0...v0.2.1) (2025-06-06)
 
 
