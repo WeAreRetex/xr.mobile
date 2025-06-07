@@ -14,10 +14,7 @@
             ],
             "jinja": true,
             "justMyCode": false,
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}"
-            }
+            "console": "integratedTerminal"
         },
         {
             "name": "FastAPI: Debug Current File",
@@ -32,10 +29,7 @@
             ],
             "jinja": true,
             "justMyCode": false,
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}"
-            }
+            "console": "integratedTerminal"
         },
         {
             "name": "Python: Current File",
@@ -43,10 +37,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": false,
-            "env": {
-                "PYTHONPATH": "${workspaceFolder}"
-            }
+            "justMyCode": false
         }
     ]
 }

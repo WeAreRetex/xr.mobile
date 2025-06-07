@@ -1,11 +1,19 @@
-from fastapi import APIRouter, Path, Body, HTTPException
-from typing import List, Optional, Dict, Any
-from app.models.backoffice import (
-    ModificheBO, GuidCnt, ModificaMsg, PromoMsg, OffertaMsg, RootScadenzeMsg,
-    Centrale, PuntoVendita
-)
-from uuid import UUID
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+from uuid import UUID
+
+from fastapi import APIRouter, Body, HTTPException, Path
+
+from app.models.backoffice import (
+    Centrale,
+    GuidCnt,
+    ModificaMsg,
+    ModificheBO,
+    OffertaMsg,
+    PromoMsg,
+    PuntoVendita,
+    RootScadenzeMsg,
+)
 
 router = APIRouter()
 
@@ -16,10 +24,21 @@ async def head():
     return {}
 
 
+# Moving specific routes before the generic ones
+@router.get("/centrali", response_model=List[Centrale])
+async def get_centrali():
+    """Restituisce la lista delle centrali."""
+    return []
+
+
+@router.get("/pv/{id}", response_model=List[PuntoVendita])
+async def get_punti_vendita(id: int = Path(..., description="ID della centrale")):
+    """Restituisce la lista dei punti vendita per una centrale."""
+    return []
+
+
 @router.get("/{id}", response_model=List[ModificheBO])
-async def get_modifiche(
-    id: int = Path(..., description="ID del punto vendita")
-):
+async def get_modifiche(id: int = Path(..., description="ID del punto vendita")):
     """Restituisce le modifiche per un punto vendita."""
     return []
 
@@ -27,7 +46,7 @@ async def get_modifiche(
 @router.post("/{id}", response_model=bool)
 async def post_modifica(
     id: UUID = Path(..., description="ID della modifica"),
-    dataOra: datetime = Body(..., description="Data e ora della modifica")
+    dataOra: datetime = Body(..., description="Data e ora della modifica"),
 ):
     """Aggiunge una modifica per un ID specifico."""
     return True
@@ -37,7 +56,7 @@ async def post_modifica(
 async def get_modifiche_applicate(
     mac: str = Path(..., description="MAC address del dispositivo"),
     id: int = Path(..., description="ID del punto vendita"),
-    ore: int = Path(..., description="Ore da considerare")
+    ore: int = Path(..., description="Ore da considerare"),
 ):
     """Restituisce le modifiche applicate per un dispositivo e punto vendita."""
     return []
@@ -47,7 +66,7 @@ async def get_modifiche_applicate(
 async def post_etichetta(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: ModificaMsg = Body(..., description="Informazioni sulla modifica")
+    info: ModificaMsg = Body(..., description="Informazioni sulla modifica"),
 ):
     """Aggiorna l'etichetta di un articolo."""
     return "OK"
@@ -57,7 +76,7 @@ async def post_etichetta(
 async def post_prezzo(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: ModificaMsg = Body(..., description="Informazioni sulla modifica")
+    info: ModificaMsg = Body(..., description="Informazioni sulla modifica"),
 ):
     """Aggiorna il prezzo di un articolo."""
     return "OK"
@@ -67,7 +86,7 @@ async def post_prezzo(
 async def post_giacenza(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: ModificaMsg = Body(..., description="Informazioni sulla modifica")
+    info: ModificaMsg = Body(..., description="Informazioni sulla modifica"),
 ):
     """Aggiorna la giacenza di un articolo."""
     return "OK"
@@ -77,7 +96,7 @@ async def post_giacenza(
 async def post_scorta_min(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: ModificaMsg = Body(..., description="Informazioni sulla modifica")
+    info: ModificaMsg = Body(..., description="Informazioni sulla modifica"),
 ):
     """Aggiorna la scorta minima di un articolo."""
     return "OK"
@@ -87,7 +106,7 @@ async def post_scorta_min(
 async def post_promo(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: PromoMsg = Body(..., description="Informazioni sulla promozione")
+    info: PromoMsg = Body(..., description="Informazioni sulla promozione"),
 ):
     """Aggiorna la promozione di un articolo."""
     return "OK"
@@ -97,7 +116,7 @@ async def post_promo(
 async def post_offerta(
     mac: str = Path(..., description="MAC address del dispositivo"),
     codice: str = Path(..., description="Codice articolo"),
-    info: OffertaMsg = Body(..., description="Informazioni sull'offerta")
+    info: OffertaMsg = Body(..., description="Informazioni sull'offerta"),
 ):
     """Aggiorna l'offerta di un articolo."""
     return "OK"
@@ -106,21 +125,7 @@ async def post_offerta(
 @router.post("/expire/{mac}", response_model=str)
 async def post_expire(
     mac: str = Path(..., description="MAC address del dispositivo"),
-    info: RootScadenzeMsg = Body(..., description="Informazioni sulle scadenze")
+    info: RootScadenzeMsg = Body(..., description="Informazioni sulle scadenze"),
 ):
     """Aggiorna le scadenze."""
     return "OK"
-
-
-@router.get("/centrali", response_model=List[Centrale])
-async def get_centrali():
-    """Restituisce la lista delle centrali."""
-    return []
-
-
-@router.get("/pv/{id}", response_model=List[PuntoVendita])
-async def get_punti_vendita(
-    id: int = Path(..., description="ID della centrale")
-):
-    """Restituisce la lista dei punti vendita per una centrale."""
-    return []
